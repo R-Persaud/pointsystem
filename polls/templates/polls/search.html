@@ -1,0 +1,73 @@
+{% extends 'polls/main.html'%}
+{% load static%}
+{% block content%}  
+
+<!--search bar-->
+<div class="row sticky-top">
+    <div class="col">
+        <div class="card card-body mb-5 bg-light ">
+            <form method="POST" action="{% url 'search'%}" class="d-flex justify-content-center">
+                {% csrf_token %}
+                <!--{{form}}-->
+                <a class="btn btn-success ml-2 mr-2" href="{%url 'addemp'%}" >Add Employee</a>
+               <!--<button  type="button" class="btn  btn-success ml-2 mr-2" href="{%url 'addemp'%}">Add Employee</button>-->
+                <p class="m-1 text-black">or</p>
+                <input type="search" class="form-control me-2 ml-2 mr-2" aria-label="Search" placeholder="Search Employees..." name="searched" style="" >
+                <button class ="btn btn-outline-secondary" type="submit">Search</button>
+                
+                
+            </form>
+        </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body m-3">
+                
+        {% if result%}    
+            
+            <h4 class="">Showing results for "{{result}}"</h4> 
+        
+            {%if not query%}
+                <h4 class="d-flex justify-content-center">No Results</h4>
+            {%else%}
+                <!--otherwise make results table-->
+                <div class="container d-flex form-inline">
+                    {% for i in query %}
+                    
+                        <a href="{% url 'profile' i.empid %}" class="hover-zoom" style="text-decoration: none; ">
+                                <div class="col-md-4 ">
+                                   
+                                    <div class="card mb-4 box-shadow m-2" >
+                                        
+                                        <div class="card-body ">
+                                            <div class="d-flex justify-content-between">
+                                            <h5 class="card-title">{{i.name}}</h5>
+                                            <a href="{% url 'delete' i.empid %}" style="text-decoration: none;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                              </svg></a>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                            <h6 class="card-subtitle mb-2 text-muted">{{i.position}}</h6>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                             
+                                </div>
+                            </a>
+                          
+                    {%endfor%}
+                           
+                 
+                {%endif%}
+                
+            </div>
+        {%else%}
+            <h3 class="d-flex justify-content-center">You forgot to enter something :/ </h3>
+        </div>
+        </div>
+    </div>
+{%endif%}
+{%endblock%}

@@ -1,0 +1,23 @@
+{% extends 'polls/main.html'%}
+{% load static%}
+{% block content%} 
+<div class="newempform" >
+        
+    <div class="wrapper">
+    <form class="form d-flex flex-column align-items-center m-3" method="POST" action="" id="newemp">
+    
+    <h2 class="subtitle text-center ">New Employee</h2>
+    <div class="generated form-group  ">
+        {% csrf_token %}
+        {{form.as_p}}
+
+    </div>
+      
+        <input class ="btn btn-outline-success" style="width: 35%;" type="submit" name="submit" >
+        <button class="btn btn-outline-dark" style="width: 35%;" onClick="javascript:history.go(-1);">Cancel</button>
+        
+    </form>
+    </div>
+</div>
+
+{% endblock %}

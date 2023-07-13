@@ -1,0 +1,20 @@
+{% extends 'polls/main.html'%}
+{% block content%}  
+{%load static%}
+
+<div class="card text-center m-5">
+    <div class="card-header">
+      Delete Employee
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Are you sure you want to delete "{{emp.name}}"?</h5>
+      <form action="{% url 'delete' emp.empid %}" method="POST">
+        {%csrf_token%}
+        <a class=" btn btn-light "href="{%url 'dash'%}">Cancel</a>
+        <input class="btn btn-success" type="submit" name="Confirm" id="">
+    </form>
+    
+  </div>
+
+
+{% endblock %}

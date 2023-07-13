@@ -1,0 +1,25 @@
+{% extends 'polls/main.html'%}
+{% load static%}
+{% block content%} 
+<div class="wrapper " >
+        
+    <div class="wrapper m-5 ">
+
+    <form class="form d-flex flex-column align-items-start " method="POST" action="" id="crit">
+    <h2 class="subtitle">Update Criteria</h2>
+
+    <div class="generated form-group d-flex flex-column" id="critform">
+        {% csrf_token %}
+        {{form.as_p}}
+
+    </div>   
+        <div class="row">
+        <input class =" btn" type="submit" name="submit" >
+        <button class="btn btn-outline-dark ml-2 " onClick="javascript:history.go(-1);">Cancel</button>     
+    </div>
+
+    </form>
+    </div>
+</div>
+
+{% endblock %}

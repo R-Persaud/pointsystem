@@ -1,0 +1,59 @@
+{% extends 'polls/main.html'%}
+{% block content%} 
+<!-- Jumbotron -->
+<div
+  class="bg-image p-4  shadow-1-strong  mb-5 text-white"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp');">
+  <div class="row">
+
+    <div class="col-9">
+      <h1 class="">{{employee.name}}</h1>
+        <h2 class="mr-5">Points: {{total}}</h2>
+        <p class="text-align-left">
+        ID: {{employee.empid}} <br>
+        Name: {{employee.name}} <br>
+        Position: {{employee.position}}</p>
+      </div>
+
+      <div class="col">
+       
+        <ul class="list-unstyled ">
+          <br>
+          <li>Punctuality: &nbsp; {{punctuality}}</li>
+          <li>Communication: &nbsp; {{comms}}</li>
+          <li>Teamwork: &nbsp; {{teamwork}}</li>
+          <li>Initiative: &nbsp; {{initiative}}</li>
+          <li>Professionalism: &nbsp; {{professionalism}}</li>
+        </ul>
+      </div>
+  </div>
+</div>
+<!-- Jumbotron -->
+
+
+<div class="container">
+  <div class="d-flex justify-content-start  ">
+    <a class="btn btn-outline-success mr-3" href="{%url 'update' employee.empid%}">Update</a>
+    <a class="btn btn-outline-dark " href="{%url 'dash'%}">Back</a>                                                                
+  </div>
+
+  <ul id="check" class="mt-2">
+
+  {% for i in points %}
+  
+  <li class="row">
+    <div class="col">{{i.rid.criteria}}
+    </div> 
+    <div class="col text-muted">({{i.rid.cid.title}})</div>
+  </li>
+  {%endfor%}
+</ul>
+
+
+
+
+</div>
+
+
+
+{% endblock %}

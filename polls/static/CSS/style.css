@@ -1,0 +1,36 @@
+#check {
+    list-style: none;
+    padding-left:1.5rem;
+  }
+
+  #check li {
+    margin-bottom:.4rem;
+    font-size:1.1rem;
+  }
+  
+  #check li:before {
+    font-family: 'FontAwesome';
+    content: '✓';
+    margin:0 10px 0 -28px;
+    color: #17aa1c;
+  }
+
+
+  #critform textarea{
+  width: 75%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  height: 55px;
+  display: block;
+  }
+
+
+  #loginform {
+    width: 75%;
+  }
+
+  #loginbtn{
+    width:108%;
+  }

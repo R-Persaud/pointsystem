@@ -1,0 +1,26 @@
+{% extends 'polls/main.html'%}
+{% load static%}
+{% block content%} 
+<div class="card-body" style="background-color: rgb(244, 244, 244);" >
+
+ <div class="d-flex justify-content-center ml-5 " >
+  <!-- your_template.html -->
+<form method="post" action="" class=" shadow-lg mt-3 border border-light rounded p-5 " style="background-color: white;">
+  <h3 class="mb-4 ">Update {{emp.name}}'s Points</h3>
+    {% csrf_token %}
+    
+    
+    {% for radio in form.criteria_scores %}
+      <div>
+        {{ radio.tag }}
+        <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+      </div>
+    {% endfor %}
+    <div class="d-flex justify-content-between mt-2">
+    <button type="submit" class="btn btn-outline-success mt-2">Submit</button>
+  </div>
+  </form>
+  
+</div>
+</div>
+{% endblock %}
